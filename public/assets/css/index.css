@@ -1,5 +1,5 @@
 .background {
-    position: absolute;
+    position: fixed;
     background: url("../image/background.jpg") no-repeat center center;
     background-size: cover;
     width: 100%;
