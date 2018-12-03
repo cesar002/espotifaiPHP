@@ -40,7 +40,7 @@
                                 <label for="pass"><h5>Contraseña:</h5></label>
                                 <input class="form-control" type="password" name="password" id="pass" placeholder="password">
                             </div>
-                            <div class="form-group col-lg-11 mx-auto">
+                            <div class="form-group col-lg-11 mx-auto text-center">
                                 <small class="text-muted">¿aun no te haz registrado? <a href="">¡ven y registrate!</a></small>
                             </div>
                             <div class="form-group col-lg-11 mx-auto">
