@@ -14,8 +14,8 @@
     <title>Espotifai</title>
 </head>
 <body>
-    <div class="container-fluid text-center">
-        <div class="background "></div>
+    <div class="container-fluid">
+        <!-- <div class="background "></div> -->
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 max-auto">
                 <div class="my-5 px-5">
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mt-4">
                 <div class="card shadow-lg">
-                    <div class="card-tittle border-bottom" >
+                    <div class="card-tittle border-bottom text-center" >
                         <h1>Espotifai</h1>
                         <h3>Login</h3>
                     </div>
