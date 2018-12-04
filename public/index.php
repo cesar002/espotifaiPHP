@@ -14,7 +14,7 @@
     <title>Espotifai</title>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid portada">
         <!-- <div class="background "></div> -->
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 max-auto">
