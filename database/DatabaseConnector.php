@@ -1,9 +1,9 @@
 <?php
-namespace database;
+namespace database\DatabaseConnector;
 
 include 'DatabaseData.php';
 
-use database\DatabaseData;
+use database\DatabaseData\DatabaseData;
 
 class DatabaseConnector {
     protected $conector;

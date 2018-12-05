@@ -1,4 +1,6 @@
 <?php 
+namespace utils\PasswordUtils;
+
 class PasswordUtils {
     
     public static function createHash($pass){

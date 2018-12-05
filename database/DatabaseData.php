@@ -1,5 +1,5 @@
 <?php
-namespace database;
+namespace database\DatabaseData;
 
 class DatabaseData {
     private $user = "root";
