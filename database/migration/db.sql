@@ -150,6 +150,7 @@ CREATE TABLE IF NOT EXISTS `espotifai_dev`.`token_registro` (
   `id_usuario` INT NOT NULL,
   `fecha_creacion` DATE NOT NULL,
   `fecha_expiracion` DATE NOT NULL,
+  `usado` BIT NOT NULL,
   PRIMARY KEY (`id_token`),
   INDEX `id_usuario_idx` (`id_usuario` ASC),
   CONSTRAINT `id_usuario`
@@ -168,6 +169,7 @@ CREATE TABLE IF NOT EXISTS `espotifai_dev`.`token_reset` (
   `id_usuario` INT NOT NULL,
   `fecha_creacion` DATE NOT NULL,
   `fecha_expiracion` DATE NOT NULL,
+  `usado` BIT NOT NULL,
   PRIMARY KEY (`id_token`),
   INDEX `fk_token_reset_usuarios1_idx` (`id_usuario` ASC),
   CONSTRAINT `fk_token_reset_usuarios1`
