@@ -4,7 +4,7 @@ namespace database\DatabaseData;
 class DatabaseData {
     private $user = "root";
     private $pass = "";
-    private $dbname = "espotifai";
+    private $dbname = "espotifai_dev";   //"espotifai";
     private $host = "localhost";
 
     public static function getUser() {

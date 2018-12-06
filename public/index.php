@@ -1,3 +1,14 @@
+<?php
+    include '../middelware/Login.php';
+    include '../utils/Redirect.php';
+    use middelware\Login;
+    use utils\Redirect;
+
+    if(Login::isLogin()){
+        Redirect::redirectTo("./home.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +35,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mt-4">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mt-1">
                 <div class="card shadow-lg">
                     <div class="card-tittle border-bottom text-center" >
                         <h1>Espotifai</h1>
@@ -40,7 +51,11 @@
                                 <label for="pass"><h5>Contraseña:</h5></label>
                                 <input class="form-control" type="password" name="password" id="pass" placeholder="password">
                             </div>
-                            <div class="form-group col-lg-11 mx-auto text-center">
+                            <!-- <div class="form-group col-lg-11 mx-auto text-center">
+                                <small class><a href="#">¿olvidaste tu contraseña?</a></small>
+                            </div> -->
+                            <div class="form-group col-lg-11 mx-auto text-center mb-3">
+                                <small class><a href="#">¿olvidaste tu contraseña?</a></small><br>
                                 <small class="text-muted">¿aun no te haz registrado? <a href="">¡ven y registrate!</a></small>
                             </div>
                             <div class="form-group col-lg-11 mx-auto">
