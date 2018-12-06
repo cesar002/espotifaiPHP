@@ -3,32 +3,86 @@ namespace database\models;
 
 
 class UserModel {
-    private $username;
+    private $id_user;
     private $pass;
+    private $email;
+    private $create_time;
 
     
-    public function getUsername()
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
     {
-        return $this->username;
+        return $this->email;
     }
 
-    public function setUsername($username)
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
     {
-        $this->username = $username;
+        $this->email = $email;
 
     }
 
+    /**
+     * Get the value of id_user
+     */ 
+    public function getId_user()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Set the value of id_user
+     *
+     * @return  self
+     */ 
+    public function setId_user($id_user)
+    {
+        $this->id_user = $id_user;
+
+    }
+
+    /**
+     * Get the value of pass
+     */ 
     public function getPass()
     {
         return $this->pass;
     }
 
-
+    /**
+     * Set the value of pass
+     *
+     * @return  self
+     */ 
     public function setPass($pass)
     {
         $this->pass = $pass;
 
-        return $this;
     }
-    
+
+    /**
+     * Get the value of id_user
+     */ 
+    public function getId_user()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * Set the value of id_user
+     *
+     * @return  self
+     */ 
+    public function setId_user($id_user)
+    {
+        $this->id_user = $id_user;
+
+    }
 }
