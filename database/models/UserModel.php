@@ -67,22 +67,4 @@ class UserModel {
 
     }
 
-    /**
-     * Get the value of id_user
-     */ 
-    public function getId_user()
-    {
-        return $this->id_user;
-    }
-
-    /**
-     * Set the value of id_user
-     *
-     * @return  self
-     */ 
-    public function setId_user($id_user)
-    {
-        $this->id_user = $id_user;
-
-    }
 }
