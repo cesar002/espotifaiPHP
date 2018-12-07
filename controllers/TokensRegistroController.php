@@ -3,8 +3,15 @@ namespace controllers;
 
 include '../database/DataBaseExecute.php';
 include '../database/querys/TokenRegistroQuerys.php';
+include '../utils/DatesUtil.php';
+include '../utils/TokenGenerator.php';
+include '../utils/EmailSend.php';
+
 use database\DataBaseExecute\DataBaseExecute;
 use database\querys\TokenRegistroQuery;
+use utils\DatesUtils;
+use utils\TokenGenerator;
+use utils\EmailSend;
 
 class TokenRegistroController extends DataBaseExecute{
 
@@ -13,9 +20,13 @@ class TokenRegistroController extends DataBaseExecute{
 
         if(!empty($result)){
             if($result["usado"] == 0){
-                if(strtotime($result["fecha_expiracion"]) > strtotime(date("y-m-d"))){
+                if(!DatesUtils::comparerWithCurrentDate($result["fecha_expiracion"])){
                     return true;
                 }
+                return false;
+                // if(strtotime($result["fecha_expiracion"]) > strtotime(date("y-m-d"))){
+                //     return true;
+                // }
             }
             return false;
         }
@@ -23,7 +34,7 @@ class TokenRegistroController extends DataBaseExecute{
         return false;
     }
 
-    public function verificaryUsarToken($token, $fechaUso){
+    public function verificaryUsarToken($token){
         if($this->verificarToken($token)){
             if($this->usarToken($token)){
                 return true;
@@ -35,8 +46,20 @@ class TokenRegistroController extends DataBaseExecute{
         return $this->execQuery(TokenRegistroQuery::ponerTokenComoUsado($token));
     }
 
-    public function crearToken(){
-        // return $this->execQuery(TokenRegistroQuery::crearToken($token,$idUser,date("y-m-d"), date_add(date("y/m/d"))));
+    public function crearToken($id_user){
+        return $this->execQuery(TokenRegistroQuery::crearToken(TokenGenerator::generateOpenSSLToken(20), $id_user, DatesUtils::addDaysToCurrentDate(5)));
+    }
+
+    public function crearTokenyEnviar($id_user, $emai){
+
+        $token = TokenGenerator::generateOpenSSLToken(20);
+
+        if( $this->execQuery(TokenRegistroQuery::crearToken($token, $id_user, DatesUtils::addDaysToCurrentDate(5))) ){
+            EmailSend::sendEmailToken($emai, $token);
+            return true;
+        }
+
+        return false;
     }
 
 

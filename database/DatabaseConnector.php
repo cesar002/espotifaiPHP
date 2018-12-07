@@ -16,4 +16,16 @@ class DatabaseConnector {
         }
     }
 
+    protected function startTransaction(){
+        $this->conector->beginTransaction();
+    }
+
+    protected function commit(){
+        $this->conector->commit();
+    }
+
+    protected function rollBack(){
+        $this->conector->rollback();
+    }
+
 }

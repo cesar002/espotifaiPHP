@@ -1,5 +1,5 @@
 <?php 
-namespace utils\PasswordUtils;
+namespace utils;
 
 class PasswordUtils {
     
