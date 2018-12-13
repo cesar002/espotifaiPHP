@@ -1,14 +1,12 @@
 <?php
 namespace database\querys;
 
-// include '../database/models/UserModel.php';
-
 use database\models\UserModel;
 
-class UserQuery{
+class UserQuerys{
 
     public static function crearUser($email, $pass) {
-        return "INSERT INTO usuarios(email, PASSWORD) VALUES('$user','$pass')";
+        return "INSERT INTO usuarios(email, PASSWORD) VALUES('$email','$pass')";
     }
 
     public static function actualizarDatos(UserModel $user) {

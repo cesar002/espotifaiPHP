@@ -1,11 +1,12 @@
 <?php
 namespace controllers;
 
-include '../database/models/UserModel.php';
-include '../database/models/DatosUsuarioModel.php';
+include_once '../database/models/UserModel.php';
+include_once '../database/models/DatosUsuarioModel.php';
 
 use database\models\UserModel;
 use database\models\DatosUsuarioModel;
+
 
 class SessionController{
 

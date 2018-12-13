@@ -1,7 +1,7 @@
 <?php
 namespace database\querys;
 
-class TokenRegistroQuery {
+class TokenRegistroQuerys {
 
     public static function buscarToken($token){
         return "SELECT id_token, fecha_expiracion, usado FROM token_registro WHERE id_token = '$token'";
@@ -9,7 +9,13 @@ class TokenRegistroQuery {
 
     public static function crearToken($token, $idUser, $fechaLimite){
         $currentDate = date("Y-m-d");
-        return "INSERT INTO token_registro(id_token, id_usuario, fecha_creacion, fecha_expiracion) VALUES ('$token','$idUser','$currentDate','$fechaLimite')";
+        return "INSERT INTO token_registro(id_token, id_usuario, fecha_creacion, fecha_expiracion, usado) VALUES ('$token','$idUser','$currentDate','$fechaLimite', 0)";
+    }
+
+    public static function prepareCrearToken(){
+        $currentDate = date("Y-m-d");
+        
+        return "INSERT INTO token_registro(id_token, id_usuario, fecha_creacion, fecha_expiracion, usado) VALUES (:token, :id_user,'$currentDate', :fecha_limite, 0)";
     }
 
     public static function ponerTokenComoUsado($token){

@@ -1,13 +1,29 @@
 <?php
-include '../controllers/UserController.php';
-use controllers\UserController\UserController;
-use database\models\UserModel;
+// include '../controllers/UserController.php';
+// include '../database/models/UserModel.php';
+// include '../database/querys/UserQuerys.php';
+// include '../utils/PasswordUtils.php';
+// include '../controllers/TokensRegistroService.php';
 
-$usuario = new UserModel();
+spl_autoload_register(function ($class){
+    $data = "../" .str_replace('\\', '/', $class).".php";
+    if(file_exists("../" .str_replace('\\', '/', $class).".php")){
+        include_once("../" .str_replace('\\', '/', $class).".php");
+    }
+});
 
-$usuario->setEmail("gundam@gmail.com");
-$usuario->setPass("unodostres");
+use utils\EmailSend;
 
-$controller = new UserController();
+EmailSend::sendEmailToken("soul.unleashed13@gmail.com", "asdasdasdasdasd");
 
-$controller->registrarUsuario($usuario);
+// use controllers\UserController;
+// use database\models\UserModel;
+
+// $usuario = new UserModel();
+
+// $usuario->setEmail("soul.unleashed13@gmail.com");
+// $usuario->setPass("unodostres");
+
+// $controller = new UserController();
+
+// $controller->registrarUsuario($usuario);

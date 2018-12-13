@@ -18,8 +18,11 @@ class DatesUtils{
 
     public static function addDaysToCurrentDate($numberDays){
         $currentDate = date("Y-m-d");
-        date_add($currentDate, date_interval_create_from_date_string($numberDays." days"));
-        return date_format($currentDate, "Y-m-d");
+        $date = new \DateTime($currentDate);
+        $date->add(new \DateInterval('P'.$numberDays.'D'));
+        return $date->format("Y-m-d");
+        // date_add($currentDate, date_interval_create_from_date_string($numberDays." days"));
+        // return date_format($currentDate, "Y-m-d");
     }
 
     public static function addDaysToDate($date, $numberDays){

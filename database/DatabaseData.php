@@ -2,25 +2,25 @@
 namespace database\DatabaseData;
 
 class DatabaseData {
-    private $user = "root";
-    private $pass = "";
-    private $dbname = "espotifai_dev";   //"espotifai";
-    private $host = "localhost";
+    private static $user = "root";
+    private static $pass = "";
+    private static $dbname = "espotifai_dev";   //"espotifai";
+    private static $host = "localhost";
 
     public static function getUser() {
-        return self::user;
+        return self::$user;
     }
 
     public static function getPass() {
-        return self::pass;
+        return self::$pass;
     }
 
     public static function getDBName() {
-        return self::dbname;
+        return self::$dbname;
     }
 
     public static function getHost() {
-        return self::host;
+        return self::$host;
     }
 
 }

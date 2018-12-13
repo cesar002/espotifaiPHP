@@ -1,31 +1,55 @@
 <?php
-namespace controllers\UserController;
+namespace controllers;
 
-include '../database/DatabaseExecute.php';
-include '../database/models/UserModel.php';
-include '../database/querys/UserQuerys.php';
-include '../utils/PasswordUtils.php';
-
-use database\DataBaseExecute\DataBaseExecute;
+use database\DB;
 use database\models\UserModel;
-use database\querys\UserQuery;
+use database\querys\UserQuerys;
 use utils\PasswordUtils;
+use controllers\TokenRegistroController;
 
-class UserController extends DataBaseExecute{
+class UserController{
     
     public function registrarUsuario(UserModel $user){
+
         try {
-            $this->conectar();
-            $this->startTransaction();
+            DB::conectar();
+            
+            $tokenController = new TokenRegistroController();
 
-            $this->execQuery(UserQuery::crearUser($user->getEmail(), PasswordUtils::createHash($user->getPass()) ));
+            
+            DB::startTransaction();
 
-            print_r($this->conector->lastInsertId());
-            echo("<br>");
-            $this->commit();
-            print_r($this->conector->lastInsertId());
-        } catch (Exception $e) {
-            $this->rollBack();
+            $idkey = DB::insert(UserQuerys::crearUser( $user->getEmail(), PasswordUtils::createHash($user->getPass()) ));
+
+            // $this->conectar();
+            // $this->startTransaction();
+
+            // $this->execQuery(UserQuery::crearUser($user->getEmail(), PasswordUtils::createHash($user->getPass()) ));
+
+            // $idkey = $this->conector->lastInsertId();
+            if($idkey == 0){
+                throw new \Exception("llave duplicada, ese usuario ya existe");
+            }
+
+            if(!$tokenController->crearTokenyEnviar($idkey, $user->getEmail())){
+                throw new \Exception("no se logro registrar y enviar el token");
+            }
+
+            // if(!$tokenController->crearTokenyEnviar($idkey, $user->getEmail())){
+            //     throw new \Exception("no se logro registrar y enviar el token");
+            // }
+
+            
+            DB::commit();
+            // $this->commit();
+        } catch (\Exception $e) {
+            // $this->rollBack();
+            DB::rollBack();
+        } catch(\PDOException $pe) {
+            // $this->rollBack();
+            DB::rollBack();
+        } catch(\Error $err){
+            DB::rollBack();
         }
     }
 
