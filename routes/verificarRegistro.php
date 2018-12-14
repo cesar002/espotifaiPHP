@@ -15,10 +15,9 @@ if(!Login::isLogin()){
         
         if(isset($_GET["token"])){
             if($userControl->verificarUsuario($_GET["token"])){
-                //redirigimos a una pagina que diga que ya puede iniciar sesion el bato
-                echo "Se ha validado su usuario, ahora puede iniciar sesión";
+                header('Location: ../successPage/validado.html');
             }else{
-                echo "error al validar el usuario";
+               header('Location: ../errorsPage/error404.html');
             }
         }
 

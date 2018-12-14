@@ -24,7 +24,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Registrate!!</h2>
-                    <form method="POST" action="#" id="registro">
+                    <form method="POST" action="../routes/Registrarse.php" id="registro">
                         <div class="input-group">
                             <input class="input--style-3" type="email" placeholder="Email" name="email">
                         </div>

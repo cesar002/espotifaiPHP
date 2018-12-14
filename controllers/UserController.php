@@ -31,6 +31,7 @@ class UserController{
             
             DB::commit();
 
+            return true;
         } catch (\Exception $e) {
             DB::rollBack();
         } catch(\PDOException $pe) {

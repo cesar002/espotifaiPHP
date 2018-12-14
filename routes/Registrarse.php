@@ -10,11 +10,21 @@ spl_autoload_register(function ($class){
  use controllers\UserController;
  use database\models\UserModel;
 
- $usuario = new UserModel();
+ $tipoMethod = $_SERVER["REQUEST_METHOD"];
 
- $usuario->setEmail("soul.unleashed13@gmail.com");
- $usuario->setPass("gundam000");
+ if($tipoMethod == "POST"){
+    $usuario = new UserModel();
+    $usuario->setEmail($_POST["email"]);
+    $usuario->setPass($_POST["password"]);
 
- $controller = new UserController();
+    $controller = new UserController();
 
- $controller->registrarUsuario($usuario);
+    if( $controller->registrarUsuario($usuario) ){
+        header('Location: ../successPage/registrado.html');
+    }else{
+        header('Location: ../errorsPage/errorRegistro.html');
+    }
+
+ }else{
+     header('Location: ../errorsPage/error404.html');
+ }

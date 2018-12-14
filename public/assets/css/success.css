@@ -1,0 +1,31 @@
+body{
+    margin: 0;
+    background-color: darkgreen;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensaje-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+    padding-right: 18rem;
+    padding-left: 18rem;
+}
+
+a{
+    text-decoration: none;
+    color: darkcyan;
+}
+
+h1{
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

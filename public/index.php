@@ -39,7 +39,7 @@
                         <h3>Login</h3>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form method="POST" action="../routes/Login.php">
                             <div class="form-group col-lg-11 mx-auto">
                                 <label for="emailuser"><h5>Correo:</h5></label>
                                 <input class="form-control" type="email" name="email" id="emailuser" placeholder="email">
@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group col-lg-11 mx-auto text-center mb-3">
                                 <small class><a href="#">¿olvidaste tu contraseña?</a></small><br>
-                                <small class="text-muted">¿aun no te haz registrado? <a href="">¡ven y registrate!</a></small>
+                                <small class="text-muted">¿aun no te haz registrado? <a href="registro.php">¡ven y registrate!</a></small>
                             </div>
                             <div class="form-group col-lg-11 mx-auto">
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Entrar</button>

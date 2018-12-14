@@ -1,22 +1,27 @@
 <?php
-include "../middelware/Login.php";
-include "../utils/Redirect.php";
-include "../utils/URLS.php";
+include_once '../utils/LoadFiles.php';
+
+autoLoad();
 
 use middelware\Login;
-use utils\Redirect;
-use const utils\URLS;
+use controllers\LoginController;
+
 
 $typeMethod = $_SERVER["REQUEST_METHOD"];
 
 if(!Login::isLogin()){
-    switch($typeMethod){
-        case "POST":
-            Redirect::redirectTo(url["paginas"]["index"]);
-        break;
-        case "GET":
-
-        break;
+    if($typeMethod == "POST"){
+        if(isset($_POST["email"]) && isset($_POST["password"])){
+            if( LoginController::Login($_POST["email"], $_POST["password"]) ){
+                header("../public/home.php");
+            }else{
+                header("Location: ../public/index.php");
+            }
+        }else{
+            header("Location: ../public/index.php");
+        }
+    }else{
+        header('Location: ../errorsPage/error404.html');
     }
 }else{
     return;
