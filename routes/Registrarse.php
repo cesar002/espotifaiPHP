@@ -1,9 +1,4 @@
 <?php
-// include '../controllers/UserController.php';
-// include '../database/models/UserModel.php';
-// include '../database/querys/UserQuerys.php';
-// include '../utils/PasswordUtils.php';
-// include '../controllers/TokensRegistroService.php';
 
 spl_autoload_register(function ($class){
     $data = "../" .str_replace('\\', '/', $class).".php";
@@ -12,18 +7,14 @@ spl_autoload_register(function ($class){
     }
 });
 
-use utils\EmailSend;
+ use controllers\UserController;
+ use database\models\UserModel;
 
-EmailSend::sendEmailToken("soul.unleashed13@gmail.com", "asdasdasdasdasd");
+ $usuario = new UserModel();
 
-// use controllers\UserController;
-// use database\models\UserModel;
+ $usuario->setEmail("soulunleashed_13@hotmail.com");
+ $usuario->setPass("gundam000");
 
-// $usuario = new UserModel();
+ $controller = new UserController();
 
-// $usuario->setEmail("soul.unleashed13@gmail.com");
-// $usuario->setPass("unodostres");
-
-// $controller = new UserController();
-
-// $controller->registrarUsuario($usuario);
+ $controller->registrarUsuario($usuario);

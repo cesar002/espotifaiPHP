@@ -12,12 +12,6 @@ class TokenRegistroQuerys {
         return "INSERT INTO token_registro(id_token, id_usuario, fecha_creacion, fecha_expiracion, usado) VALUES ('$token','$idUser','$currentDate','$fechaLimite', 0)";
     }
 
-    public static function prepareCrearToken(){
-        $currentDate = date("Y-m-d");
-        
-        return "INSERT INTO token_registro(id_token, id_usuario, fecha_creacion, fecha_expiracion, usado) VALUES (:token, :id_user,'$currentDate', :fecha_limite, 0)";
-    }
-
     public static function ponerTokenComoUsado($token){
         return "UPDATE token_registro SET usado = 1 WHERE id_token = '$token'";
     }

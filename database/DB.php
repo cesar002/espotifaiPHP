@@ -46,7 +46,7 @@ class DB {
 
     public static function execQuerySelect($query){
         $res = self::$connector->query($query);
-        return $res->fetch(PDO::FETCH_ASSOC);
+        return $res->fetch(\PDO::FETCH_ASSOC);
     }
 
     public static function startTransaction(){

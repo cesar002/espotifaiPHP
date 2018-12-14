@@ -16,10 +16,7 @@ use utils\EmailSend;
 class TokenRegistroController{
 
     public function verificarToken($token){
-        // $this->conectar();
-
-        //$result = $this->execQueryWithResult(TokenRegistroQuery::buscarToken($token));
-        $result = DB::execQuerySelect(TokenRegistroQuery::buscarToken($token));
+        $result = DB::execQuerySelect(TokenRegistroQuerys::buscarToken($token));
 
         if(!empty($result)){
             if($result["usado"] == 0){
@@ -35,6 +32,7 @@ class TokenRegistroController{
     }
 
     public function verificaryUsarToken($token){
+        DB::conectar();
         if($this->verificarToken($token)){
             if($this->usarToken($token)){
                 return true;
@@ -43,11 +41,11 @@ class TokenRegistroController{
     }
 
     public function usarToken($token){
-        return DB::insert(TokenRegistroQuery::ponerTokenComoUsado($token));
+        return DB::insert(TokenRegistroQuerys::ponerTokenComoUsado($token));
     }
 
     public function crearToken($id_user){
-        return DB::insert(TokenRegistroQuery::crearToken(TokenGenerator::generateOpenSSLToken(20), $id_user, DatesUtils::addDaysToCurrentDate(5)));
+        return DB::insert(TokenRegistroQuerys::crearToken(TokenGenerator::generateOpenSSLToken(20), $id_user, DatesUtils::addDaysToCurrentDate(5)));
     }
 
     public function crearTokenyEnviar($id_user, $emai){
