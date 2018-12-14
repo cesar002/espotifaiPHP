@@ -4,19 +4,21 @@ include '../utils/LoadFiles.php';
 autoLoad();
 
 use middelware\Login;
-use controllers\TokenRegistroController;
+use controllers\UserController;
 
 if(!Login::isLogin()){
 
     $typeMethod = $_SERVER["REQUEST_METHOD"];
 
     if($typeMethod == "GET"){
-        $tokenControl = new TokenRegistroController();
+        $userControl = new UserController();
         
         if(isset($_GET["token"])){
-            if($tokenControl->verificaryUsarToken($_GET["token"], date("Y-m-d"))){
+            if($userControl->verificarUsuario($_GET["token"])){
                 //redirigimos a una pagina que diga que ya puede iniciar sesion el bato
-                header('algo');
+                echo "Se ha validado su usuario, ahora puede iniciar sesión";
+            }else{
+                echo "error al validar el usuario";
             }
         }
 

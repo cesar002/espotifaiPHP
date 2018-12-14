@@ -12,7 +12,7 @@ spl_autoload_register(function ($class){
 
  $usuario = new UserModel();
 
- $usuario->setEmail("soulunleashed_13@hotmail.com");
+ $usuario->setEmail("soul.unleashed13@gmail.com");
  $usuario->setPass("gundam000");
 
  $controller = new UserController();

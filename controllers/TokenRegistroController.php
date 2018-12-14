@@ -1,12 +1,6 @@
 <?php
 namespace controllers;
 
-// include_once '../database/DataBaseExecute.php';
-// include_once '../database/querys/TokenRegistroQuerys.php';
-// include_once '../utils/DatesUtil.php';
-// include_once '../utils/TokenGenerator.php';
-// include_once '../utils/EmailSend.php';
-
 use database\DB;
 use database\querys\TokenRegistroQuerys;
 use utils\DatesUtils;
@@ -32,16 +26,17 @@ class TokenRegistroController{
     }
 
     public function verificaryUsarToken($token){
-        DB::conectar();
         if($this->verificarToken($token)){
             if($this->usarToken($token)){
                 return true;
             }
+            return false;
         }
+        return false;
     }
 
     public function usarToken($token){
-        return DB::insert(TokenRegistroQuerys::ponerTokenComoUsado($token));
+        return DB::insert_value_boolean(TokenRegistroQuerys::ponerTokenComoUsado($token));
     }
 
     public function crearToken($id_user){
