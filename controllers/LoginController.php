@@ -4,7 +4,7 @@ namespace controllers;
 use database\DB;
 use utils\PasswordUtils;
 use database\querys\LoginQuery;
-use controllers\SessionController;
+use controllers\SessionService;
 
 class LoginController{
 
@@ -23,7 +23,7 @@ class LoginController{
             }
 
             if(PasswordUtils::verify($password, $result["password"])){
-                SessionController::Login($result["id_user"], $email);
+                SessionService::Login($result["id_user"], $email);
 
                 return true;
             }else{

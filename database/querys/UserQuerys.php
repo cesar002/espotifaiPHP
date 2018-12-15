@@ -18,6 +18,10 @@ class UserQuerys{
         return "UPDATE usuarios SET verificado = 1 WHERE id_user = $idUsuario";
     }
 
+    public static function getUsuarioByEmail($email){
+        return "SELECT id_user, email, verificado FROM usuarios WHERE email = '$email'";
+    }
+
     public static function actualizarDatos(UserModel $user) {
 
     }

@@ -13,7 +13,7 @@ if(!Login::isLogin()){
     if($typeMethod == "POST"){
         if(isset($_POST["email"]) && isset($_POST["password"])){
             if( LoginController::Login($_POST["email"], $_POST["password"]) ){
-                header("../public/home.php");
+                header("Location: ../public/home.php");
             }else{
                 header("Location: ../public/index.php");
             }
@@ -24,5 +24,5 @@ if(!Login::isLogin()){
         header('Location: ../errorsPage/error404.html');
     }
 }else{
-    return;
+    header("Location: ../public/index.php");
 }

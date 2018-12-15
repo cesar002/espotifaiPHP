@@ -15,9 +15,13 @@ spl_autoload_register(function ($class){
  if($tipoMethod == "POST"){
     $usuario = new UserModel();
     $usuario->setEmail($_POST["email"]);
-    $usuario->setPass($_POST["password"]);
+    $usuario->setPass($_POST["pass"]);
 
     $controller = new UserController();
+
+    if($usuario->getPass() == "" || $usuario->getEmail() == ""){
+        header("Location: ../public/registro.php");
+    }
 
     if( $controller->registrarUsuario($usuario) ){
         header('Location: ../successPage/registrado.html');

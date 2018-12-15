@@ -49,7 +49,7 @@
                                 <input class="form-control" type="password" name="password" id="pass" placeholder="password">
                             </div>
                             <div class="form-group col-lg-11 mx-auto text-center mb-3">
-                                <small class><a href="#">¿olvidaste tu contraseña?</a></small><br>
+                                <small class><a href="recuperar_Contraseña.php">¿olvidaste tu contraseña?</a></small><br>
                                 <small class="text-muted">¿aun no te haz registrado? <a href="registro.php">¡ven y registrate!</a></small>
                             </div>
                             <div class="form-group col-lg-11 mx-auto">

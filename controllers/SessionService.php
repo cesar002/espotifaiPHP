@@ -2,10 +2,14 @@
 namespace controllers;
 
 
-class SessionController{
+class SessionService{
 
     public static function Login($id, $email) {
-        session_start();
+        try{
+            session_start();
+        }catch(\Exception $e){}
+        catch(\Error $err){}
+
         $_SESSION["user"] = [
             "id_user" => $id,
             "email" => $email,
@@ -14,6 +18,11 @@ class SessionController{
     }
 
     public static function Logout() {
+        try{
+            session_start();
+        }catch(\Exception $e){}
+        catch(\Error $err){}
+
         session_destroy();
     }
 

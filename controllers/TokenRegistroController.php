@@ -46,7 +46,7 @@ class TokenRegistroController{
     public function crearTokenyEnviar($id_user, $emai){
         $token = TokenGenerator::generateOpenSSLToken(20);
 
-        if( DB::insert_value_boolean(TokenRegistroQuerys::crearToken($token, $id_user, DatesUtils::addDaysToCurrentDate(5))) ){
+        if( DB::insert_value_boolean(TokenRegistroQuerys::crearToken($token, $id_user, DatesUtils::addDaysToCurrentDate(2))) ){
             EmailSend::sendEmailToken($emai, $token);
             return true;
         }
