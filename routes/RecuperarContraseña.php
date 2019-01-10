@@ -15,6 +15,7 @@ if(!Login::isLogin()){
     if($typeMethod == "POST"){
         if(!isset($_POST["email"])){
             header("Location: ../public/recuperar_Contraseña.php");
+            return;
         }
 
         if(RecuperarPassController::reSendEmailRecuperacion($_POST["email"])){

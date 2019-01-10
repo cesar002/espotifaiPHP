@@ -32,7 +32,16 @@ class DB {
     }
 
     public static function update($query){
-        return self::$connector->exec($query);
+        try{
+            self::$connector->exec($query);
+            return true;
+        }catch(\Exception $e){
+            return false;
+        }catch(\Error $err){
+            return false;
+        }catch(\PDOException $PDOe){
+            return false;
+        }
     }
 
     public static function delete($query){

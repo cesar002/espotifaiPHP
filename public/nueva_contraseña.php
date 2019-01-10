@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <?php include_once '../templates/BootstrapLinks.php'; ?>
-
+    <script src="./assets/js/nuevoPassword.js"></script>
     <title>Nueva contraseña</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
                         <h3>Ingresa una nueva contraseña</h3>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="post">
+                        <form action="#" method="post" id = "nuevoPass">
                             <div class="form-group col-lg-11 mx-auto">
                                 <label for="password"><h5>Nueva contraseña: </h5></label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="nueva contraseña">
@@ -45,7 +45,7 @@
                             </div>
                             <input type="hidden" name="token" value= "<?php echo($token); ?>" >
                             <div class="form-group col-lg-11 mx-auto">
-                                <button type="button" class="btn btn-success btn-lg btn-block">Cambiar contraseña</button>
+                                <button type="button" class="btn btn-success btn-lg btn-block" onClick="validarPasswords()">Cambiar contraseña</button>
                             </div>
                         </form>
                     </div>

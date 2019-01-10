@@ -17,7 +17,7 @@ if(!Login::isLogin()){
             if($userControl->verificarUsuario($_GET["token"])){
                 header('Location: ../successPage/validado.html');
             }else{
-               header('Location: ../errorsPage/error404.html');
+               header('Location: ../errorsPage/errorValidacion.html');
             }
         }
 

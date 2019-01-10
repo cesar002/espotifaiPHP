@@ -22,7 +22,7 @@ class UserController{
             $idkey = DB::insert(UserQuerys::crearUser( $user->getEmail(), PasswordUtils::createHash($user->getPass()) ));
 
             if($idkey == 0){
-                throw new \Exception("llave duplicada, ese usuario ya existe");
+                throw new \Exception("error al registrarse");
             }
 
             if(!$tokenController->crearTokenyEnviar($idkey, $user->getEmail())){

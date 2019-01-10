@@ -23,7 +23,9 @@ spl_autoload_register(function ($class){
         header("Location: ../public/registro.php");
     }
 
-    if( $controller->registrarUsuario($usuario) ){
+    $status = $controller->registrarUsuario($usuario);
+
+    if( $status == true ){
         header('Location: ../successPage/registrado.html');
     }else{
         header('Location: ../errorsPage/errorRegistro.html');
